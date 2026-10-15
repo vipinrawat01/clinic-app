@@ -1,0 +1,44 @@
+# --- Secrets / environment ---
+# backend/.env and frontend/.env both hold real local secrets (DB
+# password, JWT secret, service key, and the main-platform API key) —
+# never commit these. Keep a .env.example per app instead if you want to
+# document the required variables.
+.env
+.env.*
+!.env.example
+
+# --- Go backend ---
+backend/*.exe
+backend/*.test
+backend/*.out
+# A compiled binary accidentally left in the repo root (e.g.
+# backend/mintverify.exe from a local debug build) is covered by the
+# pattern above; vendor/ only matters if vendoring is ever turned on.
+backend/vendor/
+
+# --- Node / Vite frontend ---
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.tanstack/
+frontend/*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Editor / OS ---
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

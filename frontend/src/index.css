@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/*
+ * Same shadcn "new-york" design-system structure as the main Flow
+ * Agentiq platform (see frontend/src/styles.css) — same token names, same
+ * component code (every file in components/ui is copied verbatim) — only
+ * the actual oklch values differ, swapped to a calmer teal/slate instead
+ * of the main platform's green, since clinic staff using this tool are
+ * never Flow Agentiq customers (see the architecture decision to build
+ * this as a fully separate app).
+ */
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+}
+
+:root {
+  /* Sharp, near-square corners — a deliberate departure from the main
+     platform's own rounded (0.75rem) look, per explicit direction that
+     this internal ops tool should read as premium/precise rather than
+     the softer "AI product" rounded style. */
+  --radius: 0rem;
+  --background: oklch(0.975 0.004 200);
+  --foreground: oklch(0.22 0.015 220);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.015 220);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.015 220);
+  --primary: oklch(0.48 0.1 192);
+  --primary-foreground: oklch(0.98 0.004 200);
+  --secondary: oklch(0.96 0.006 200);
+  --secondary-foreground: oklch(0.3 0.015 220);
+  --muted: oklch(0.955 0.006 200);
+  --muted-foreground: oklch(0.55 0.015 220);
+  --accent: oklch(0.93 0.025 192);
+  --accent-foreground: oklch(0.3 0.015 220);
+  --destructive: oklch(0.577 0.21 25);
+  --destructive-foreground: oklch(0.98 0.004 200);
+  --border: oklch(0.9 0.008 200);
+  --input: oklch(0.9 0.008 200);
+  --ring: oklch(0.55 0.1 192);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    letter-spacing: 0;
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.85 0.02 192) transparent;
+  }
+
+  *::-webkit-scrollbar { width: 6px; height: 6px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: oklch(0.85 0.02 192); border-radius: 999px; }
+}
